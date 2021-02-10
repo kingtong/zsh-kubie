@@ -2,9 +2,13 @@
 
 The plugin displays information of the kubectl context and namespace gathered from kubie.
 
-To use it, add `zsh-kubie` to the plugins array of your zshrc file:
+To use it:
 ```
-plugins=(... zsh-kubie)
+git clone https://github.com/kingtong/zsh-kubie.git ${HOME}/.oh-my-zsh/custom/plugins/kubie
+```
+Add `kubie` to the plugins array of your zshrc file:
+```
+plugins=(... kubie)
 ```
 
 The plugin creates a `kubie_prompt_info` function that you can use in your theme, which displays
