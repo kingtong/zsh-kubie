@@ -1,0 +1,27 @@
+#compdef kubie
+#autoload
+
+#[[ -f "$NVM_DIR/nvm.sh" ]] || return 0
+
+local -a _1st_arguments
+_1st_arguments=(
+  '--help:Print help information'
+  '--version:Print version information'
+  'ctx:Spawn a shell in the given context. The shell is isolated from other shells. Kubie shells can be spawned recursively without any issue'
+  'delete:Delete a context. Automatic garbage collection will be performed. Dangling users and clusters will be removed'
+  'edit:Edit the given context'
+  'edit-config:Edit kubie's config file'
+  'exec:Execute a command inside of the given context and namespace'
+  'help:Print this message or the help of the given subcommand(s)'
+  'info:View info about the current kubie shell, such as the context name and the current namespace'
+  'lint:Check the Kubernetes config files for issues'
+  'ns:Change the namespace in which the current shell operates. The namespace change does not affect other shells'
+  'update:Check for a Kubie update and replace Kubie's binary if needed. This function can ask for sudo-mode'
+)
+
+_arguments -C '*:: :->subcmds' && return 0
+
+if (( CURRENT == 1 )); then
+  _describe -t commands "nvm subcommand" _1st_arguments
+  return
+fi
